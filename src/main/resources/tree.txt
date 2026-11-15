@@ -1,0 +1,153 @@
+# Древо навыков Каскада — единый источник для плагина (Skills.java) и генератора графики (tools/GenArt.java).
+#
+# icon <имя> <модель предмета> <текстура>        — иконка: модель для меню в клетках, текстура для круглой карты
+# branch <цвет&> <RGB> <иконка> <Название> | <описание>
+# small|big|key <поле Stats> <число|true> <иконка> <Название> | <описание>
+#   Мелкие, крупные и ключевые эффекты раздаются узлам ветки по кругу, от корня наружу, слева направо.
+# row <9 символов> ×6 — раскладка ветки снаружи внутрь: K ключевой, O крупный, o мелкий, r корень, . пусто.
+#   Родитель узла — ближайший узел в ряду ниже (ближе к ядру).
+
+icon stone_pickaxe item/stone_pickaxe item/stone_pickaxe
+icon iron_pickaxe item/iron_pickaxe item/iron_pickaxe
+icon iron_ingot item/iron_ingot item/iron_ingot
+icon gold_nugget item/gold_nugget item/gold_nugget
+icon diamond_pickaxe item/diamond_pickaxe item/diamond_pickaxe
+icon diamond item/diamond item/diamond
+icon mace item/mace item/mace
+icon netherite_pickaxe item/netherite_pickaxe item/netherite_pickaxe
+icon note_block block/note_block block/note_block
+icon amethyst_shard item/amethyst_shard item/amethyst_shard
+icon music_disc_cat item/music_disc_cat item/music_disc_cat
+icon bell item/bell item/bell
+icon jukebox block/jukebox block/jukebox_top
+icon firework_rocket item/firework_rocket item/firework_rocket
+icon goat_horn item/goat_horn item/goat_horn
+icon trident item/trident item/trident
+icon flint_and_steel item/flint_and_steel item/flint_and_steel
+icon gunpowder item/gunpowder item/gunpowder
+icon string item/string item/string
+icon tnt block/tnt block/tnt_side
+icon fire_charge item/fire_charge item/fire_charge
+icon glowstone_dust item/glowstone_dust item/glowstone_dust
+icon tnt_minecart item/tnt_minecart item/tnt_minecart
+icon end_crystal item/end_crystal item/end_crystal
+icon emerald item/emerald item/emerald
+icon leather item/leather item/leather
+icon gold_ingot item/gold_ingot item/gold_ingot
+icon bundle item/bundle item/bundle
+icon map item/map item/map
+icon name_tag item/name_tag item/name_tag
+icon hopper item/hopper item/hopper
+icon emerald_block block/emerald_block block/emerald_block
+icon rabbit_foot item/rabbit_foot item/rabbit_foot
+icon compass item/compass_00 item/compass_00
+icon raw_gold item/raw_gold item/raw_gold
+icon barrel block/barrel block/barrel_side
+icon gold_block block/gold_block block/gold_block
+icon saddle item/saddle item/saddle
+icon totem_of_undying item/totem_of_undying item/totem_of_undying
+icon golden_apple item/golden_apple item/golden_apple
+icon feather item/feather item/feather
+icon experience_bottle item/experience_bottle item/experience_bottle
+icon book item/book item/book
+icon blaze_powder item/blaze_powder item/blaze_powder
+icon enchanted_book item/enchanted_book item/enchanted_book
+icon lapis_lazuli item/lapis_lazuli item/lapis_lazuli
+icon clock item/clock_00 item/clock_00
+icon sugar item/sugar item/sugar
+
+branch &c E04848 iron_pickaxe Копатель | Сила удара и ценность руды
+small valuePct 0.04 stone_pickaxe Твёрдая рука | +4% к ценности руды
+small doubleChance 0.01 iron_pickaxe Точный удар | +1% шанс выбить и блок над целью
+small speedPct 0.01 iron_ingot Закалка | −1% паузы между ударами
+big valuePct 0.2 gold_nugget Самородки | +20% к ценности руды
+big doubleChance 0.06 diamond_pickaxe Двойной удар | +6% шанс выбить и блок над целью
+big valuePct 0.3 diamond Алмазная огранка | +30% к ценности руды
+key heavyHand true mace Тяжёлая рука | каждый 10-й удар бьёт как бомба 3×3
+key topOreDouble true netherite_pickaxe Глубинная жила | самая дорогая руда шахты стоит ×2
+row KooOoOooK
+row oOoooooOo
+row ooooooooo
+row O.o.O.o.O
+row o.o.o.o.o
+row ....r....
+
+branch &e F0C030 note_block Каскадёр | Множители цепей
+small multPct 0.02 note_block Ритм | +2% к множителю каскада
+small xpPct 0.03 amethyst_shard Эхо | +3% опыта
+small luckyChance 0.003 music_disc_cat Мелодия | +0.3% шанс, что удар принесёт ×2
+big multPct 0.08 bell Колокол | +8% к множителю каскада
+big multPct 0.12 jukebox Дирижёр | +12% к множителю каскада
+big lateBoostPct 0.25 firework_rocket Разгон | шаги каскада с 5-го +25%
+key resonance true goat_horn Резонанс | каждый шаг каскада на ступень дороже
+key storm true trident Буря | после каскада 5+ следующий удар ×3
+row oOoKoKoOo
+row ooOoOoOoo
+row ooooooooo
+row o.O.o.O.o
+row O.o.o.o.O
+row ....r....
+
+branch &6 F07828 tnt Взрывник | Взрывы и особые блоки
+small sparkChance 0.003 flint_and_steel Искра | +0.3% шанс, что удар взорвётся 3×3
+small boomPct 0.04 gunpowder Порох | +4% к доходу от взрывов
+small dynChance 0.002 string Фитиль | +0.2% шанс, что новый блок — динамит
+big boomPct 0.2 tnt Взрывчатка | +20% к доходу от взрывов
+big sparkChance 0.012 fire_charge Детонатор | +1.2% шанс, что удар взорвётся 3×3
+big rainbowChance 0.004 glowstone_dust Радужная пыль | +0.4% новых блоков — аметист
+key crossDynamite true tnt_minecart Крест | динамит взрывает и строку, и столбец
+key bigBomb true end_crystal Мегабомба | бомбы взрывают 5×5
+row OoKoOoKoO
+row ooooOoooo
+row ooooooooo
+row o.O.o.O.o
+row o.o.O.o.o
+row ....r....
+
+branch &a 40C060 emerald Торговец | Рюкзак и продажа
+small sellPct 0.02 emerald Торг | +2% к цене продажи
+small bagPct 0.04 leather Мешок | +4% вместимости рюкзака
+small discount 0.01 gold_ingot Скидка | улучшения дешевле на 1%
+big bagPct 0.2 bundle Большой мешок | +20% вместимости рюкзака
+big sellPct 0.1 map Торговый путь | +10% к цене продажи
+big discount 0.05 name_tag Связи | улучшения дешевле на 5%
+key autoSell true hopper Автопродажа | полный рюкзак продаётся сам
+key wholesale true emerald_block Оптовик | продажа полного рюкзака ×1.5
+row oOoKoKoOo
+row ooOoOoOoo
+row ooooooooo
+row o.O.o.O.o
+row O.o.o.o.O
+row ....r....
+
+branch &9 4890F0 rabbit_foot Удача | Шансы и сокровища
+small luckyChance 0.003 rabbit_foot Фарт | +0.3% шанс, что удар принесёт ×2
+small chestChance 0.002 compass Клад | +0.2% шанс бочки с сокровищами
+small goldRush 0.003 raw_gold Самородок | +0.3% новых блоков — самая дорогая руда
+big chestChance 0.008 barrel Кладоискатель | +0.8% шанс бочки с сокровищами
+big goldRush 0.012 gold_block Золотая жила | +1.2% новых блоков — самая дорогая руда
+big luckyChance 0.012 saddle Подкова | +1.2% шанс, что удар принесёт ×2
+key jackpot true totem_of_undying Джекпот | 0.5% шанс, что удар принесёт ×50
+key fortune true golden_apple Фортуна | удачный удар даёт ×3 вместо ×2
+row KooOoOooK
+row oOoooooOo
+row ooooooooo
+row O.o.O.o.O
+row o.o.o.o.o
+row ....r....
+
+branch &d A058F0 clock Мастерство | Скорость и опыт
+small speedPct 0.008 feather Сноровка | −0.8% паузы между ударами
+small xpPct 0.04 experience_bottle Ученик | +4% опыта
+small valuePct 0.015 book Опыт мастера | +1.5% к ценности руды
+big speedPct 0.04 blaze_powder Быстрые руки | −4% паузы между ударами
+big xpPct 0.2 enchanted_book Мудрость | +20% опыта
+big valuePct 0.08 lapis_lazuli Ремесло | +8% к ценности руды
+key autoPick true clock Автокирка | раз в 3 секунды кирка бьёт сама
+key fastFall true sugar Лёгкость | блоки падают вдвое быстрее
+row OoKoOoKoO
+row ooooOoooo
+row ooooooooo
+row o.O.o.O.o
+row o.o.O.o.o
+row ....r....

@@ -1,0 +1,26 @@
+name: Cascade
+version: '${version}'
+main: com.maximus.cascade.Cascade
+api-version: '26.3'
+description: Каскад — стена руды, ряды по три и цепные реакции
+commands:
+  menu:
+    description: Меню улучшений
+    aliases: [cascade, cs]
+  skills:
+    description: Дерево навыков
+    aliases: [навыки]
+  mines:
+    description: Шахты
+  sell:
+    description: Продать рюкзак
+  wall:
+    description: Вернуться к своей стене
+  top:
+    description: Рекорды каскадов
+  cadmin:
+    description: Админ-команды для тестов
+    permission: cascade.admin
+permissions:
+  cascade.admin:
+    default: op

@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'xyz.jpenilla.run-paper' version '3.1.0'
+}
+
+group = 'com.maximus'
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+	compileOnly 'io.papermc.paper:paper-api:26.3.build.207-stable'
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+	options.release = 25
+}
+
+// Ресурспак (src/main/pack) пакуется в zip и кладётся в jar — плагин сам раздаёт его игрокам.
+def packZip = tasks.register('packZip', Zip) {
+	from 'src/main/pack'
+	archiveFileName = 'cascade-pack.zip'
+	destinationDirectory = layout.buildDirectory.dir('generated/pack')
+	preserveFileTimestamps = false
+	reproducibleFileOrder = true
+}
+sourceSets.main.resources.srcDir(layout.buildDirectory.dir('generated/pack'))
+
+processResources {
+	dependsOn packZip
+	def props = [version: version]
+	inputs.properties props
+	filesMatching('plugin.yml') {
+		expand props
+	}
+}
+
+tasks.runServer {
+	minecraftVersion('26.3')
+	jvmArgs('-Dcom.mojang.eula.agree=true', '-Xmx2G')
+}

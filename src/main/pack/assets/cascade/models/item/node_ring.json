@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cascade:item/disc_fill",
+    "layer1": "cascade:item/disc_hole"
+  },
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        -2
+      ],
+      "scale": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    }
+  }
+}

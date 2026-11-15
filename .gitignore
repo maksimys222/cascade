@@ -1,0 +1,7 @@
+.gradle/
+build/
+run/
+
+# собраны из текстур Minecraft — генерируются tools/GenArt.java
+src/main/pack/assets/cascade/textures/tree/ic_*.png
+src/main/pack/assets/cascade/textures/gui/branch*.png

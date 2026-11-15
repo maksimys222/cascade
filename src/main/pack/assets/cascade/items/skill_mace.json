@@ -1,0 +1,26 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "cascade:item/node_ring",
+        "tints": [
+          {
+            "type": "minecraft:custom_model_data",
+            "index": 0,
+            "default": -1
+          },
+          {
+            "type": "minecraft:constant",
+            "value": -1
+          }
+        ]
+      },
+      {
+        "type": "minecraft:model",
+        "model": "cascade:item/icon_mace"
+      }
+    ]
+  }
+}
