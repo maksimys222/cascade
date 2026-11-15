@@ -3,6 +3,7 @@ version: '${version}'
 main: com.maximus.cascade.Cascade
 api-version: '26.3'
 description: Каскад — стена руды, ряды по три и цепные реакции
+author: maksimys222
 commands:
   menu:
     description: Меню улучшений
